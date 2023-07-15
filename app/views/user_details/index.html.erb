@@ -1,0 +1,47 @@
+
+
+
+<p id="notice"><%= notice %></p>
+
+ <h1>User Details</h1>
+
+<div class="table-responsive{-sm|-md|-lg|-xl|-xxl}">
+<table class="table border-secondary caption-top">
+  <caption>List of users</caption>
+
+   <thead class="table-light">
+     <tr>
+       <th>Name</th>
+       <th>User</th>
+       <th>Photo</th>
+       <th>Address</th>
+       <th colspan="4">Action</th>
+     </tr>
+   </thead>
+
+   <tbody>
+     <% @user_details.each do |user_detail| %>
+       <tr>
+         <td><%= user_detail.Name %></td>
+         <td><%= user_detail.User_id %></td>
+         <td><img src="<%=user_detail.photo%>" width="90" height="90"></td>
+         <td><%= user_detail.Address %></td>
+         <td><%= link_to "showimage", user_detail.photo_url,class:'btn btn-outline-success btn-sm'%></td>   
+         <td><%= link_to 'Show', user_detail, class:'btn btn-outline-success btn-sm' %></td>
+         <td><%= link_to 'Edit', edit_user_detail_path(user_detail),class:'btn btn-outline-success btn-sm'%></td>
+         <td><%= link_to 'Destroy', user_detail,class:'btn btn-outline-success btn-sm',method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       </tr>
+     <% end %>
+   </tbody>
+ </table>
+ </div>
+
+ <br>
+
+ <%= link_to 'New User Detail', new_user_detail_path %><br>
+ <%=link_to 'Log Out', destroy_user_session_path, method: :delete%><br>
+ <%= link_to "edit profile", edit_user_registration_path%><br>
+ <%=link_to "Parent Detail", parent_details_path %><br> 
+
+
+
